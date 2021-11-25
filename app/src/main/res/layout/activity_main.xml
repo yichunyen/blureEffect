@@ -29,20 +29,24 @@
         android:text="Choose the Blur Mode:" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RadioButton
+            android:id="@+id/rbRenderScript"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="RenderScript" />
 
         <RadioButton
+            android:id="@+id/rbGlide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="glide-transformations" />
 
         <RadioButton
+            android:id="@+id/rbBlurEffect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BlurEffect" />

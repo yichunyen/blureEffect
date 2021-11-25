@@ -11,7 +11,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initViews()
+    }
 
+    private fun initViews() {
+        radioGroup.check(R.id.rbBlurEffect)
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 applyBlur(p1)
@@ -26,15 +30,20 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+        seekBar.progress = 0
     }
 
     private fun applyBlur(progress: Int) {
-        imageView.setRenderEffect(
-            RenderEffect.createBlurEffect(
-                progress.toFloat(),
-                progress.toFloat(),
-                Shader.TileMode.CLAMP
+        try {
+            imageView.setRenderEffect(
+                RenderEffect.createBlurEffect(
+                    progress.toFloat(),
+                    progress.toFloat(),
+                    Shader.TileMode.CLAMP
+                )
             )
-        )
+        } catch (exception: Exception) {
+            seekBar.progress = 0
+        }
     }
 }
